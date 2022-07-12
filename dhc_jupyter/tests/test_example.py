@@ -6,9 +6,9 @@
 
 import pytest
 
-from ..example import ExampleWidget
+from ..deephaven import DeephavenWidget
 
 
 def test_example_creation_blank():
-    w = ExampleWidget()
+    w = DeephavenWidget()
     assert w.value == 'Hello World'
