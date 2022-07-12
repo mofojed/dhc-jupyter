@@ -1,0 +1,3 @@
+#!/Users/bender/dev/deephaven/py/dhc-jupyter/.venv/bin/python3
+from numba.pycc import main
+main()
