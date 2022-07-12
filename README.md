@@ -5,9 +5,11 @@
 
 A Custom Jupyter Widget Library
 
-## WIP Building/Running
+## Building/Running
 
-Source the python environment:
+### Creating Python venv environment
+
+Create and source the python venv environment:
 
 ```bash
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home
@@ -15,6 +17,45 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install --upgrade pip setuptools
 pip install deephaven_server jupyter
+```
+
+After initial installation/creation, you can just do
+
+```bash
+source .venv/bin/activate
+```
+
+### Running in Jupyter lab
+
+To start up jupyter lab, just run the command from your terminal (after sourcing venv):
+
+```bash
+jupyter lab
+```
+
+### Running in VS Code (WIP)
+
+1. Create a new notebook (.ipynb) or open an existing file
+2. Create a `.env` file with your `JAVA_HOME` variable set, e.g.
+
+```bash
+JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home
+```
+
+3. In the notebook, make sure your `.venv` Python environment is selected - either use the dropdown menu in the top right, or hit `Ctrl + P` then type `> Select Kernel` and select the `Notebook: Select Notebook Kernel` option and choose `.venv`.
+
+## Development
+
+After making changes to the JS part of the extension, run the following to update the JS build.
+
+```bash
+yarn run build
+```
+
+After making any changes to Python or JS then run the following to update in the jupyter env:
+
+```bash
+jupyter labextension develop --overwrite .
 ```
 
 ## Installation
