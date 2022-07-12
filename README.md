@@ -32,7 +32,7 @@ the nbextension:
 jupyter nbextension enable --py [--sys-prefix|--user|--system] dhc_jupyter
 ```
 
-## Development Installation
+## (DEPRECATED) Development Installation
 
 Create a dev environment:
 
