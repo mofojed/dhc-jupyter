@@ -6,8 +6,8 @@ import {
   DOMWidgetView,
   ISerializers,
 } from '@jupyter-widgets/base';
-import { v4 as uuidv4 } from 'uuid';
-import dh from '@deephaven/jsapi-shim';
+// import { v4 as uuidv4 } from 'uuid';
+// import dh from '@deephaven/jsapi-shim';
 import Log from '@deephaven/log';
 import { MODULE_NAME, MODULE_VERSION } from './version';
 
@@ -62,39 +62,54 @@ export class ExampleView extends DOMWidgetView {
     // this.model.on('change:model_id', this.update_element, this);
   }
 
+  //   async init_element() {
+  //     const serverUrl = this.model.get('server_url');
+  //     const widgetId = this.model.get('widget_id');
+  //     log.info('init_element for widget', widgetId, serverUrl);
+
+  //     // We need to generate an ID, connect to a session, and assign the table to a new variable
+  //     const tableId = `widget_t_${uuidv4().replace(/-/g, '_')}`;
+
+  //     log.info('tableId', tableId);
+
+  //     const connection = new dh.IdeConnection(serverUrl);
+
+  //     log.info('connection', connection);
+
+  //     // await connection.getConsoleTypes();
+
+  //     const ide = await connection.startSession('python');
+
+  //     log.info('ide', ide);
+
+  //     const code = `
+  // from ipywidgets import Widget
+  // ${tableId} = Widget.widgets['${widgetId}'].table
+  //     `;
+
+  //     log.info('running code', code);
+
+  //     const result = await (ide as any).runCode(code);
+  //     // connection = new dh.IdeConnection(window.location.protocol + "//" + window.location.host);
+
+  //     const iframeUrl = `${serverUrl}/iframe/table/?name=${tableId}`;
+
+  //     log.info('code ran! opening table in iframe...', result, iframeUrl);
+
+  //     this.iframe.src = iframeUrl;
+
+  //     // this.iframe.src = this.model.get('value');
+  //     // this.el.textContent = `model_id--->${this.model.get('model_id')}`;
+  //     // this.el.textContent = `text--->${this.model.get('value')},${this.model.get(
+  //     //   'table_id'
+  //     // )},${this.model.get('port')}`;
+  //   }
+
   async init_element() {
     const serverUrl = this.model.get('server_url');
-    const widgetId = this.model.get('widget_id');
-    log.info('init_element for widget', widgetId, serverUrl);
-
-    // We need to generate an ID, connect to a session, and assign the table to a new variable
-    const tableId = `widget_t_${uuidv4().replace(/-/g, '_')}`;
-
-    log.info('tableId', tableId);
-
-    const connection = new dh.IdeConnection(serverUrl);
-
-    log.info('connection', connection);
-
-    // await connection.getConsoleTypes();
-
-    const ide = await connection.startSession('python');
-
-    log.info('ide', ide);
-
-    const code = `
-from ipywidgets import Widget
-${tableId} = Widget.widgets['${widgetId}'].table
-    `;
-
-    log.info('running code', code);
-
-    const result = await (ide as any).runCode(code);
-    // connection = new dh.IdeConnection(window.location.protocol + "//" + window.location.host);
-
+    const tableId = this.model.get('table_id');
     const iframeUrl = `${serverUrl}/iframe/table/?name=${tableId}`;
-
-    log.info('code ran! opening table in iframe...', result, iframeUrl);
+    log.info('init_element for widget', tableId, serverUrl, iframeUrl);
 
     this.iframe.src = iframeUrl;
 
