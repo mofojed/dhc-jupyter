@@ -14,13 +14,23 @@ from deephaven_server import Server
 from uuid import uuid4
 from ._frontend import module_name, module_version
 
-class DeephavenWidget(DOMWidget):
-    # Need to configure from the main context so we can add our variables
-    globals = globals()
-    default_width = 900
-    default_height = 600
-    default_server_url = "http://localhost:8080"
+DEFAULT_WIDTH = 900
+DEFAULT_HEIGHT = 600
+DEFAULT_SERVER_URL = "http://localhost:8080"
 
+class DeephavenWidget(DOMWidget):
+    _globals = globals()
+    _default_width = DEFAULT_WIDTH
+    _default_height = DEFAULT_HEIGHT
+    _default_server_url = DEFAULT_SERVER_URL
+
+    # Need to call the initialize method to correctly set the globals var
+    @staticmethod
+    def init(globals, width=DEFAULT_WIDTH, height=DEFAULT_HEIGHT, url=DEFAULT_SERVER_URL):
+      DeephavenWidget._globals = globals
+      DeephavenWidget._default_server_url = url
+      DeephavenWidget._default_width = width
+      DeephavenWidget._default_height = height
 
     """A wrapper for viewing DeephavenWidgets in IPython
     """
@@ -39,17 +49,17 @@ class DeephavenWidget(DOMWidget):
 
 
     # We have to pass in the main `globals` so that we can assign our temporary table variable correctly
-    def __init__(self, table, width=default_width, height=default_height, server_url=default_server_url):
+    def __init__(self, table, width=_default_width, height=_default_height, url=_default_server_url):
         super(DeephavenWidget, self).__init__()
 
         # Generate a new table ID using a UUID prepended with a `t_` prefix
         table_id = f"t_{str(uuid4()).replace('-', '_')}"
 
         # Add the table to the globals list so it can be retrieved by the iframe
-        DeephavenWidget.globals[table_id] = table
+        DeephavenWidget._globals[table_id] = table
 
         self.set_trait('widget_id', self.model_id)
-        self.set_trait('server_url', server_url)
+        self.set_trait('server_url', url)
         self.set_trait('table_id', table_id)
         self.set_trait('width', width)
         self.set_trait('height', height)

@@ -30,15 +30,7 @@ There are some values that you must initialize in your notebook for the `Deephav
 # Initialize the Deephaven Widget
 from dhc_jupyter import DeephavenWidget
 
-# Set the default dimensions to display tables
-DeephavenWidget.default_width = 900
-DeephavenWidget.default_height = 600
-
-# Set the Deephaven Server URL
-DeephavenWidget.default_server_url = f"http://localhost:8080"
-
-# Set the globals dictionary so tables can be fetched correctly
-DeephavenWidget.globals = globals()
+DeephavenWidget.init(globals(), url="http://localhost:8080", width=900, height=600)
 
 display("Deephaven Widget initialized")
 ```
