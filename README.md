@@ -22,6 +22,17 @@ jupyter nbextension enable --py [--sys-prefix|--user|--system] dhc_jupyter
 
 ## Usage
 
+### Starting the server
+
+First you'll need to start the [Deephaven server](https://github.com/deephaven/deephaven-core/blob/d73ef01cdf6fda43f7d03110995add26d16d4eae/py/embedded-server/README.md).
+
+```python
+# Start up the Deephaven Server
+from deephaven_server import Server
+s = Server(port=8080)
+s.start()
+```
+
 ### Initialization
 
 There are some values that you must initialize in your notebook for the `DeephavenWidget` to work correctly. Add the following code block (with the values filled in correctly) to initialize the `DeephavenWidget`.
@@ -107,6 +118,19 @@ JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home
 
 2. Create a new notebook (.ipynb) or open an existing notebook file
 3. In the notebook, make sure your `.venv` Python environment is selected - either use the dropdown menu in the top right, or hit `Ctrl + P` then type `> Select Kernel` and select the `Notebook: Select Notebook Kernel` option and choose `.venv`.
+4. By default, ipywidgets puts a [white background behind widgets](https://github.com/microsoft/vscode-jupyter/issues/9403) which can look bad when using a dark theme. To configure the theme to dark in your notebook, you can run the following cell:
+
+```
+%%html
+<style>
+.cell-output-ipywidget-background {
+   background-color: transparent !important;
+}
+.jp-OutputArea-output {
+   background-color: transparent;
+}
+</style>
+```
 
 ### How to see your changes
 
