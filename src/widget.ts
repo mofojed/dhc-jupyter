@@ -6,8 +6,6 @@ import {
   DOMWidgetView,
   ISerializers,
 } from '@jupyter-widgets/base';
-// import { v4 as uuidv4 } from 'uuid';
-// import dh from '@deephaven/jsapi-shim';
 import Log from '@deephaven/log';
 import { MODULE_NAME, MODULE_VERSION } from './version';
 
@@ -52,10 +50,17 @@ export class ExampleView extends DOMWidgetView {
     const serverUrl = this.model.get('server_url');
     const tableId = this.model.get('table_id');
     const iframeUrl = `${serverUrl}/iframe/table/?name=${tableId}`;
+    const width = this.model.get('width');
+    const height = this.model.get('height');
     log.info('init_element for widget', tableId, serverUrl, iframeUrl);
 
     this.iframe = document.createElement('iframe');
     this.iframe.src = iframeUrl;
+    this.iframe.style.width = `${width}px`;
+    this.iframe.style.height = `${height}px`;
+    this.iframe.width = width;
+    this.iframe.height = height;
+    this.el.className = 'dhc-jupyter-widget';
     this.el.appendChild(this.iframe);
   }
 }

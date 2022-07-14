@@ -3,60 +3,7 @@
 [![Build Status](https://travis-ci.org/deephaven/dhc-jupyter.svg?branch=master)](https://travis-ci.org/deephaven/dhc_jupyter)
 [![codecov](https://codecov.io/gh/deephaven/dhc-jupyter/branch/master/graph/badge.svg)](https://codecov.io/gh/deephaven/dhc-jupyter)
 
-A Custom Jupyter Widget Library
-
-## Building/Running
-
-### Creating Python venv environment
-
-Create and source the python venv environment:
-
-```bash
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home
-python3 -m venv .venv
-source .venv/bin/activate
-pip install --upgrade pip setuptools
-pip install deephaven_server jupyter
-```
-
-After initial installation/creation, you can just do
-
-```bash
-source .venv/bin/activate
-```
-
-### Running in Jupyter lab
-
-To start up jupyter lab, just run the command from your terminal (after sourcing venv):
-
-```bash
-jupyter lab
-```
-
-### Running in VS Code (WIP)
-
-1. Create a new notebook (.ipynb) or open an existing file
-2. Create a `.env` file with your `JAVA_HOME` variable set, e.g.
-
-```bash
-JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home
-```
-
-3. In the notebook, make sure your `.venv` Python environment is selected - either use the dropdown menu in the top right, or hit `Ctrl + P` then type `> Select Kernel` and select the `Notebook: Select Notebook Kernel` option and choose `.venv`.
-
-## Development
-
-After making changes to the JS part of the extension, run the following to update the JS build.
-
-```bash
-yarn run build
-```
-
-After making any changes to Python or JS then run the following to update in the jupyter env:
-
-```bash
-jupyter labextension develop --overwrite .
-```
+Deephaven Community Jupyter Widget Library
 
 ## Installation
 
@@ -73,13 +20,63 @@ the nbextension:
 jupyter nbextension enable --py [--sys-prefix|--user|--system] dhc_jupyter
 ```
 
-## (DEPRECATED) Development Installation
+## Usage
 
-Create a dev environment:
+### Initialization
+
+There are some values that you must initialize in your notebook for the `DeephavenWidget` to work correctly. Add the following code block (with the values filled in correctly) to initialize the `DeephavenWidget`.
+
+```python
+# Initialize the Deephaven Widget
+from dhc_jupyter import DeephavenWidget
+
+# Set the default dimensions to display tables
+DeephavenWidget.default_width = 900
+DeephavenWidget.default_height = 600
+
+# Set the Deephaven Server URL
+DeephavenWidget.default_server_url = f"http://localhost:8080"
+
+# Set the globals dictionary so tables can be fetched correctly
+DeephavenWidget.globals = globals()
+
+display("Deephaven Widget initialized")
+```
+
+### Display Tables
+
+Pass the table into a `DeephavenWidget` to display a table:
+
+```python
+# Create a table and display it
+from deephaven import empty_table
+t = empty_table(1000).update("x=i")
+display(DeephavenWidget(t))
+```
+
+You can also pass in the size you would like the widget to be:
+
+```python
+# Specify a size for the table
+display(DeephavenWidget(t, width=100, height=250))
+```
+
+## Development Installation
+
+Create and source a dev python venv environment:
 
 ```bash
-conda create -n dhc_jupyter-dev -c conda-forge nodejs yarn python jupyterlab
-conda activate dhc_jupyter-dev
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home
+python3 -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip setuptools
+pip install deephaven_server jupyter jupyterlab jupyter-packaging
+```
+
+After initial installation/creation, you can just do
+
+```bash
+source .venv/bin/activate
 ```
 
 Install the python. This will also build the TS package.
@@ -107,6 +104,17 @@ Note that the `--symlink` flag doesn't work on Windows, so you will here have to
 the `install` command every time that you rebuild your extension. For certain installations
 you might also need another flag instead of `--sys-prefix`, but we won't cover the meaning
 of those flags here.
+
+For running in VS Code, you need to run the classic notebook steps, as well as set up the VS Code environment:
+
+1. Create a `.env` file with your `JAVA_HOME` variable set, e.g.
+
+```bash
+JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home
+```
+
+2. Create a new notebook (.ipynb) or open an existing notebook file
+3. In the notebook, make sure your `.venv` Python environment is selected - either use the dropdown menu in the top right, or hit `Ctrl + P` then type `> Select Kernel` and select the `Notebook: Select Notebook Kernel` option and choose `.venv`.
 
 ### How to see your changes
 

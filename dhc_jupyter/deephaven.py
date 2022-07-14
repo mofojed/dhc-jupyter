@@ -15,6 +15,13 @@ from uuid import uuid4
 from ._frontend import module_name, module_version
 
 class DeephavenWidget(DOMWidget):
+    # Need to configure from the main context so we can add our variables
+    globals = globals()
+    default_width = 900
+    default_height = 600
+    default_server_url = "http://localhost:8080"
+
+
     """A wrapper for viewing DeephavenWidgets in IPython
     """
     _model_name = Unicode('ExampleModel').tag(sync=True)
@@ -27,17 +34,22 @@ class DeephavenWidget(DOMWidget):
     widget_id = Unicode().tag(sync=True)
     table_id = Unicode().tag(sync=True)
     server_url = Unicode().tag(sync=True)
+    width = Integer().tag(sync=True)
+    height = Integer().tag(sync=True)
+
 
     # We have to pass in the main `globals` so that we can assign our temporary table variable correctly
-    def __init__(self, table, main_globals=globals()):
+    def __init__(self, table, width=default_width, height=default_height, server_url=default_server_url):
         super(DeephavenWidget, self).__init__()
 
         # Generate a new table ID using a UUID prepended with a `t_` prefix
         table_id = f"t_{str(uuid4()).replace('-', '_')}"
 
-        self.set_trait('widget_id', self.model_id)
-        self.set_trait('server_url', f"http://localhost:{Server.instance.port}")
-        self.set_trait('table_id', table_id);
+        # Add the table to the globals list so it can be retrieved by the iframe
+        DeephavenWidget.globals[table_id] = table
 
-        # Add the table to the globals list so it can be retrieved
-        main_globals[table_id] = table
+        self.set_trait('widget_id', self.model_id)
+        self.set_trait('server_url', server_url)
+        self.set_trait('table_id', table_id)
+        self.set_trait('width', width)
+        self.set_trait('height', height)
