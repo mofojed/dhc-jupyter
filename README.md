@@ -66,6 +66,8 @@ display(DeephavenWidget(t, width=100, height=250))
 
 ## Development Installation
 
+Before starting, you will need [python3](https://www.python.org/downloads/), [node](https://nodejs.org/en/download/), and [yarn](https://classic.yarnpkg.com/lang/en/docs/install/) installed.
+
 Create and source a dev python venv environment:
 
 ```bash
@@ -116,7 +118,7 @@ For running in VS Code, you need to run the classic notebook steps, as well as s
 JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home
 ```
 
-2. Create a new notebook (.ipynb) or open an existing notebook file
+2. Create a new notebook (.ipynb) or open an existing notebook file (such as [example.ipynb](./example.ipynb))
 3. In the notebook, make sure your `.venv` Python environment is selected - either use the dropdown menu in the top right, or hit `Ctrl + P` then type `> Select Kernel` and select the `Notebook: Select Notebook Kernel` option and choose `.venv`.
 4. By default, ipywidgets puts a [white background behind widgets](https://github.com/microsoft/vscode-jupyter/issues/9403) which can look bad when using a dark theme. To configure the theme to dark in your notebook, you can run the following cell:
 
