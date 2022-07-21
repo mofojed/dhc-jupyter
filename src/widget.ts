@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+/* eslint-disable max-classes-per-file */
 // Copyright (c) Mike Bender
 // Distributed under the terms of the Modified BSD License.
 
@@ -9,13 +11,14 @@ import {
 import Log from '@deephaven/log';
 import { MODULE_NAME, MODULE_VERSION } from './version';
 
-const log = Log.module('deephaven-ipywidgets.widget');
-
 // Import the CSS
 import '../css/widget.css';
 
+const log = Log.module('deephaven-ipywidgets.widget');
+
 export class DeephavenModel extends DOMWidgetModel {
-  defaults() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  defaults(): any {
     return {
       ...super.defaults(),
       _model_name: DeephavenModel.model_name,
@@ -33,17 +36,23 @@ export class DeephavenModel extends DOMWidgetModel {
   };
 
   static model_name = 'DeephavenModel';
+
   static model_module = MODULE_NAME;
+
   static model_module_version = MODULE_VERSION;
+
   static view_name = 'DeephavenView'; // Set to null if no view
+
   static view_module = MODULE_NAME; // Set to null if no view
+
   static view_module_version = MODULE_VERSION;
 }
 
 export class DeephavenView extends DOMWidgetView {
   private iframe: HTMLIFrameElement;
 
-  render() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  render(): any {
     const iframeUrl = this.model.get('iframe_url');
     const width = this.model.get('width');
     const height = this.model.get('height');

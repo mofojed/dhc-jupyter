@@ -1,6 +1,6 @@
 # deephaven-ipywidgets
 
-Deephaven Community Jupyter Widget Library
+Deephaven Community IPython Widget Library
 
 ## Installation
 
