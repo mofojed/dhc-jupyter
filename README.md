@@ -30,19 +30,6 @@ s = Server(port=8080)
 s.start()
 ```
 
-### Initialization
-
-There are some values that you must initialize in your notebook for the `DeephavenWidget` to work correctly. Add the following code block (with the values filled in correctly) to initialize the `DeephavenWidget`.
-
-```python
-# Initialize the Deephaven Widget
-from deephaven_ipywidgets import DeephavenWidget
-
-DeephavenWidget.init(globals(), url="http://localhost:8080", width=900, height=600)
-
-display("Deephaven Widget initialized")
-```
-
 ### Display Tables
 
 Pass the table into a `DeephavenWidget` to display a table:
@@ -117,19 +104,6 @@ JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home
 
 2. Create a new notebook (.ipynb) or open an existing notebook file (such as [example.ipynb](./example.ipynb))
 3. In the notebook, make sure your `.venv` Python environment is selected - either use the dropdown menu in the top right, or hit `Ctrl + P` then type `> Select Kernel` and select the `Notebook: Select Notebook Kernel` option and choose `.venv`.
-4. By default, ipywidgets puts a [white background behind widgets](https://github.com/microsoft/vscode-jupyter/issues/9403) which can look bad when using a dark theme. To configure the theme to dark in your notebook, you can run the following cell:
-
-```
-%%html
-<style>
-.cell-output-ipywidget-background {
-   background-color: transparent !important;
-}
-.jp-OutputArea-output {
-   background-color: transparent;
-}
-</style>
-```
 
 ### How to see your changes
 
