@@ -146,12 +146,12 @@ $RECYCLE.BIN/
 # ----
 
 **/node_modules/
-dhc_jupyter/nbextension/index.*
-dhc_jupyter/labextension/*.tgz
+deephaven_ipywidgets/nbextension/index.*
+deephaven_ipywidgets/labextension/*.tgz
 
 # Coverage data
 # -------------
 **/coverage/
 
 # Packed lab extensions
-dhc_jupyter/labextension
+deephaven_ipywidgets/labextension

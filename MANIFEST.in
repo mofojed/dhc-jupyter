@@ -9,7 +9,7 @@ include .coverage.rc
 include tsconfig.json
 include package.json
 include webpack.config.js
-include dhc_jupyter/labextension/*.tgz
+include deephaven_ipywidgets/labextension/*.tgz
 
 # Documentation
 graft docs
@@ -26,7 +26,7 @@ graft tests
 prune tests/build
 
 # Javascript files
-graft dhc_jupyter/nbextension
+graft deephaven_ipywidgets/nbextension
 graft src
 graft css
 prune **/node_modules

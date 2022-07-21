@@ -26,7 +26,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 
 
 # The name of the project
-name = 'dhc_jupyter'
+name = 'deephaven_ipywidgets'
 
 # Get the version
 version = get_version(pjoin(name, '_version.py'))
@@ -48,10 +48,10 @@ package_data_spec = {
 
 
 data_files_spec = [
-    ('share/jupyter/nbextensions/dhc_jupyter', 'dhc_jupyter/nbextension', '**'),
-    ('share/jupyter/labextensions/dhc-jupyter', 'dhc_jupyter/labextension', '**'),
-    ('share/jupyter/labextensions/dhc-jupyter', '.', 'install.json'),
-    ('etc/jupyter/nbconfig/notebook.d', '.', 'dhc_jupyter.json'),
+    ('share/jupyter/nbextensions/deephaven_ipywidgets', 'deephaven_ipywidgets/nbextension', '**'),
+    ('share/jupyter/labextensions/deephaven-ipywidgets', 'deephaven_ipywidgets/labextension', '**'),
+    ('share/jupyter/labextensions/deephaven-ipywidgets', '.', 'install.json'),
+    ('etc/jupyter/nbconfig/notebook.d', '.', 'deephaven_ipywidgets.json'),
 ]
 
 
@@ -73,7 +73,7 @@ setup_args = dict(
     packages        = find_packages(),
     author          = 'Mike Bender',
     author_email    = 'mikebender@deephaven.io',
-    url             = 'https://github.com/deephaven/dhc-jupyter',
+    url             = 'https://github.com/deephaven/deephaven-ipywidgets',
     license         = 'BSD',
     platforms       = "Linux, Mac OS X, Windows",
     keywords        = ['Jupyter', 'Widgets', 'IPython'],

@@ -1,5 +1,5 @@
 
-dhc_jupyter
+deephaven_ipywidgets
 =====================================
 
 Version: |release|
@@ -10,13 +10,13 @@ A Custom Jupyter Widget Library
 Quickstart
 ----------
 
-To get started with dhc_jupyter, install with pip::
+To get started with deephaven_ipywidgets, install with pip::
 
-    pip install dhc_jupyter
+    pip install deephaven_ipywidgets
 
 or with conda::
 
-    conda install dhc_jupyter
+    conda install deephaven_ipywidgets
 
 
 Contents

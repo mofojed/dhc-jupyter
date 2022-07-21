@@ -9,7 +9,7 @@ import {
 import Log from '@deephaven/log';
 import { MODULE_NAME, MODULE_VERSION } from './version';
 
-const log = Log.module('dhc-jupyter.widget');
+const log = Log.module('deephaven-ipywidgets.widget');
 
 // Import the CSS
 import '../css/widget.css';
@@ -59,7 +59,7 @@ export class DeephavenView extends DOMWidgetView {
       this.iframe.height = height;
       this.iframe.style.height = `${height}px`;
     }
-    this.el.className = 'dhc-jupyter-widget';
+    this.el.className = 'deephaven-ipywidgets-widget';
     this.el.appendChild(this.iframe);
   }
 }

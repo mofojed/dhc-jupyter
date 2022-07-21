@@ -5,27 +5,27 @@ Installation
 ============
 
 
-The simplest way to install dhc_jupyter is via pip::
+The simplest way to install deephaven_ipywidgets is via pip::
 
-    pip install dhc_jupyter
+    pip install deephaven_ipywidgets
 
 or via conda::
 
-    conda install dhc_jupyter
+    conda install deephaven_ipywidgets
 
 
 If you installed via pip, and notebook version < 5.3, you will also have to
 install / configure the front-end extension as well. If you are using classic
 notebook (as opposed to Jupyterlab), run::
 
-    jupyter nbextension install [--sys-prefix / --user / --system] --py dhc_jupyter
+    jupyter nbextension install [--sys-prefix / --user / --system] --py deephaven_ipywidgets
 
-    jupyter nbextension enable [--sys-prefix / --user / --system] --py dhc_jupyter
+    jupyter nbextension enable [--sys-prefix / --user / --system] --py deephaven_ipywidgets
 
 with the `appropriate flag`_. If you are using Jupyterlab, install the extension
 with::
 
-    jupyter labextension install dhc-jupyter
+    jupyter labextension install deephaven-ipywidgets
 
 If you are installing using conda, these commands should be unnecessary, but If
 you need to run them the commands should be the same (just make sure you choose the

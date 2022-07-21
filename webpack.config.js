@@ -5,7 +5,7 @@ const version = require('./package.json').version;
 const rules = [
   { test: /\.ts$/, loader: 'ts-loader' },
   { test: /\.js$/, loader: 'source-map-loader' },
-  { test: /\.css$/, use: ['style-loader', 'css-loader']}
+  { test: /\.css$/, use: ['style-loader', 'css-loader'] },
 ];
 
 // Packages that shouldn't be bundled but loaded at runtime
@@ -13,7 +13,7 @@ const externals = ['@jupyter-widgets/base'];
 
 const resolve = {
   // Add '.ts' and '.tsx' as resolvable extensions.
-  extensions: [".webpack.js", ".web.js", ".ts", ".js"]
+  extensions: ['.webpack.js', '.web.js', '.ts', '.js'],
 };
 
 module.exports = [
@@ -27,12 +27,12 @@ module.exports = [
     entry: './src/extension.ts',
     output: {
       filename: 'index.js',
-      path: path.resolve(__dirname, 'dhc_jupyter', 'nbextension'),
+      path: path.resolve(__dirname, 'deephaven_ipywidgets', 'nbextension'),
       libraryTarget: 'amd',
       publicPath: '',
     },
     module: {
-      rules: rules
+      rules: rules,
     },
     devtool: 'source-map',
     externals,
@@ -40,7 +40,7 @@ module.exports = [
   },
 
   /**
-   * Embeddable dhc-jupyter bundle
+   * Embeddable deephaven-ipywidgets bundle
    *
    * This bundle is almost identical to the notebook extension bundle. The only
    * difference is in the configuration of the webpack public path for the
@@ -52,20 +52,20 @@ module.exports = [
   {
     entry: './src/index.ts',
     output: {
-        filename: 'index.js',
-        path: path.resolve(__dirname, 'dist'),
-        libraryTarget: 'amd',
-        library: "dhc-jupyter",
-        publicPath: 'https://unpkg.com/dhc-jupyter@' + version + '/dist/'
+      filename: 'index.js',
+      path: path.resolve(__dirname, 'dist'),
+      libraryTarget: 'amd',
+      library: 'deephaven-ipywidgets',
+      publicPath:
+        'https://unpkg.com/deephaven-ipywidgets@' + version + '/dist/',
     },
     devtool: 'source-map',
     module: {
-        rules: rules
+      rules: rules,
     },
     externals,
     resolve,
   },
-
 
   /**
    * Documentation widget bundle
@@ -77,15 +77,14 @@ module.exports = [
     output: {
       filename: 'embed-bundle.js',
       path: path.resolve(__dirname, 'docs', 'source', '_static'),
-      library: "dhc-jupyter",
-      libraryTarget: 'amd'
+      library: 'deephaven-ipywidgets',
+      libraryTarget: 'amd',
     },
     module: {
-      rules: rules
+      rules: rules,
     },
     devtool: 'source-map',
     externals,
     resolve,
-  }
-
+  },
 ];

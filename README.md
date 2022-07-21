@@ -1,7 +1,4 @@
-# dhc-jupyter
-
-[![Build Status](https://travis-ci.org/deephaven/dhc-jupyter.svg?branch=master)](https://travis-ci.org/deephaven/dhc_jupyter)
-[![codecov](https://codecov.io/gh/deephaven/dhc-jupyter/branch/master/graph/badge.svg)](https://codecov.io/gh/deephaven/dhc-jupyter)
+# deephaven-ipywidgets
 
 Deephaven Community Jupyter Widget Library
 
@@ -10,14 +7,14 @@ Deephaven Community Jupyter Widget Library
 You can install using `pip`:
 
 ```bash
-pip install dhc_jupyter
+pip install deephaven-ipywidgets
 ```
 
 If you are using Jupyter Notebook 5.2 or earlier, you may also need to enable
 the nbextension:
 
 ```bash
-jupyter nbextension enable --py [--sys-prefix|--user|--system] dhc_jupyter
+jupyter nbextension enable --py [--sys-prefix|--user|--system] deephaven-ipywidgets
 ```
 
 ## Usage
@@ -39,7 +36,7 @@ There are some values that you must initialize in your notebook for the `Deephav
 
 ```python
 # Initialize the Deephaven Widget
-from dhc_jupyter import DeephavenWidget
+from deephaven_ipywidgets import DeephavenWidget
 
 DeephavenWidget.init(globals(), url="http://localhost:8080", width=900, height=600)
 
@@ -101,8 +98,8 @@ yarn run build
 For classic notebook, you need to run:
 
 ```
-jupyter nbextension install --sys-prefix --symlink --overwrite --py dhc_jupyter
-jupyter nbextension enable --sys-prefix --py dhc_jupyter
+jupyter nbextension install --sys-prefix --symlink --overwrite --py deephaven_ipywidgets
+jupyter nbextension enable --sys-prefix --py deephaven_ipywidgets
 ```
 
 Note that the `--symlink` flag doesn't work on Windows, so you will here have to run

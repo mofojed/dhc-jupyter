@@ -21,7 +21,7 @@ def _jupyter_labextension_paths():
     """
     return [{
         'src': 'labextension',
-        'dest': 'dhc-jupyter',
+        'dest': 'deephaven-ipywidgets',
     }]
 
 
@@ -44,6 +44,6 @@ def _jupyter_nbextension_paths():
     return [{
         'section': 'notebook',
         'src': 'nbextension',
-        'dest': 'dhc_jupyter',
-        'require': 'dhc_jupyter/extension'
+        'dest': 'deephaven_ipywidgets',
+        'require': 'deephaven_ipywidgets/extension'
     }]

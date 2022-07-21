@@ -1,9 +1,9 @@
-.dhc-jupyter-widget {
+.deephaven-ipywidgets-widget {
   padding: 0;
   margin: 0;
 }
 
-.dhc-jupyter-widget iframe {
+.deephaven-ipywidgets-widget iframe {
   border: none;
   width: 100%;
 }

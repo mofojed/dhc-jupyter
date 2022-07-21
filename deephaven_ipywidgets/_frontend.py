@@ -8,5 +8,5 @@
 Information about the frontend package of the widgets.
 """
 
-module_name = "dhc-jupyter"
+module_name = "deephaven-ipywidgets"
 module_version = "^0.1.0"

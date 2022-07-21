@@ -3,11 +3,11 @@ Developer install
 =================
 
 
-To install a developer version of dhc_jupyter, you will first need to clone
+To install a developer version of deephaven_ipywidgets, you will first need to clone
 the repository::
 
-    git clone https://github.com/deephaven/dhc-jupyter
-    cd dhc-jupyter
+    git clone https://github.com/deephaven/deephaven-ipywidgets
+    cd deephaven-ipywidgets
 
 Next, install it with a develop install using pip::
 
@@ -17,9 +17,9 @@ Next, install it with a develop install using pip::
 If you are planning on working on the JS/frontend code, you should also do
 a link installation of the extension::
 
-    jupyter nbextension install [--sys-prefix / --user / --system] --symlink --py dhc_jupyter
+    jupyter nbextension install [--sys-prefix / --user / --system] --symlink --py deephaven_ipywidgets
 
-    jupyter nbextension enable [--sys-prefix / --user / --system] --py dhc_jupyter
+    jupyter nbextension enable [--sys-prefix / --user / --system] --py deephaven_ipywidgets
 
 with the `appropriate flag`_. Or, if you are using Jupyterlab::
 

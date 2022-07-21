@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# dhc_jupyter documentation build configuration file
+# deephaven_ipywidgets documentation build configuration file
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -58,7 +58,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'dhc_jupyter'
+project = 'deephaven_ipywidgets'
 copyright = '2022, Mike Bender'
 author = 'Mike Bender'
 
@@ -73,7 +73,7 @@ author = 'Mike Bender'
 import os
 here = os.path.dirname(__file__)
 repo = os.path.join(here, '..', '..')
-_version_py = os.path.join(repo, 'dhc_jupyter', '_version.py')
+_version_py = os.path.join(repo, 'deephaven_ipywidgets', '_version.py')
 version_ns = {}
 with open(_version_py) as f:
     exec(f.read(), version_ns)
@@ -120,7 +120,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'dhc_jupyterdoc'
+htmlhelp_basename = 'deephaven_ipywidgetsdoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -147,7 +147,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'dhc_jupyter.tex', 'dhc_jupyter Documentation',
+    (master_doc, 'deephaven_ipywidgets.tex', 'deephaven_ipywidgets Documentation',
      'Mike Bender', 'manual'),
 ]
 
@@ -158,8 +158,8 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     (master_doc,
-    'dhc_jupyter',
-    'dhc_jupyter Documentation',
+    'deephaven_ipywidgets',
+    'deephaven_ipywidgets Documentation',
      [author], 1)
 ]
 
@@ -171,10 +171,10 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     (master_doc,
-     'dhc_jupyter',
-     'dhc_jupyter Documentation',
+     'deephaven_ipywidgets',
+     'deephaven_ipywidgets Documentation',
      author,
-     'dhc_jupyter',
+     'deephaven_ipywidgets',
      'A Custom Jupyter Widget Library',
      'Miscellaneous'),
 ]
